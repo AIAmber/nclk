@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ajax echarts test</title>
+
+    <!-- import echarts.js -->
+    <script type="text/javascript" src="js/echarts.mine.js"></script>
+    <!-- import jquery.js -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- ehcarts zone -->
+    <div id="main" style="width: 600px; height: 400px;"></div>
+
+    <!-- echarts js -->
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+
+        myChart.setOption({
+            title: {
+                text: 'example: ajax load json'
+            },
+            tooltip: {},
+            legend: {
+                data: ['num']
+            },
+            xAxis: {
+                data: []
+            },
+            yAxis: {},
+            series: [{
+                name: 'num',
+                type: 'bar',
+                data: []
+            }]
+        });
+
+        myChart.showLoading();
+
+        var names = []; //x
+        var nums = []; //y
+
+        $.ajax({
+            type: "get",
+            async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "./data/testData.json", //请求发送到TestServlet处
+            dataType: "json", //返回数据形式为json
+            success: function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+
+                // sevlet method
+                //                if (result) {
+                //                    for (var i = 0; i < result.length; i++) {
+                //                        names.push(result[i].name); //挨个取出 x 并填入 x 数组
+                //                    }
+                //                    for (var i = 0; i < result.length; i++) {
+                //                        nums.push(result[i].num); //挨个取出 y 并填入 y 数组
+                //                    }
+                //                    myChart.hideLoading(); //隐藏加载动画
+                //                    myChart.setOption({ //加载数据图表
+                //                        xAxis: {
+                //                            data: names
+                //                        },
+                //                        series: [{
+                //                            // 根据名字对应到相应的系列
+                //                            name: 'num',
+                //                            data: nums
+                //                        }]
+                //                    });
+                //                }
+
+                // json file method
+                $.each(result.list, function(index, item) {
+                    names.push(item.name); //挨个取出类别并填入类别数组                    
+                    nums.push(item.num); //挨个取出销量并填入销量数组
+                });
+
+                myChart.hideLoading();
+                myChart.setOption({ //加载数据图表
+                    xAxis: {
+                        data: names
+                    },
+                    series: [{
+                        // 根据名字对应到相应的系列
+                        name: 'sssss',
+                        data: nums
+                    }]
+                });
+            },
+
+            error: function(errorMsg) {
+                //请求失败时执行该函数
+                alert("load failed!");
+                myChart.hideLoading();
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

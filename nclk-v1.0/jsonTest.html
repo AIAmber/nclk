@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>json test</title>
+    <!-- import jquery.js -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var pieDataXs = []; //x
+        var pieDataYs = []; //y
+
+        $.ajax({
+            type: "get",
+            async: true, //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "./data/testTuple.json", //
+            dataType: "json", //返回数据形式为json
+            success: function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+
+                // json file method
+                $.each(result.pieData, function(index, item) {
+                    $.each(item.pieDataX, function(index, item) {
+                        pieDataXs.push(item);
+                    });
+
+                    $.each(item.pieDataY, function(index, item) {
+                        pieDataYs.push(item);
+                    });
+
+                    // code use
+//                    $.each(item.lineDataX, function(index, item) {
+//                        lineDataXs.push(item);
+//                    });
+//
+//                    $.each(item.lineDataY, function(index, item) {
+//                        lineDataYs.push(item);
+//                    });
+//
+//                    for (var i = 0; i < item.lineDataX.length; i++) {
+//                        lineDataXs.push(item.lineDataX[i]);
+//                    }
+//
+//                    for (var i = 0; i < item.lineDataY.length; i++) {
+//                        lineDataYs.push(item.lineDataY[i]);
+//                    }
+                });
+                alert(pieDataXs[1]);
+
+            },
+
+            error: function(errorMsg) {
+                //请求失败时执行该函数
+                alert("load failed!");
+                myChart.hideLoading();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

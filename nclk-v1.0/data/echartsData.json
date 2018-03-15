@@ -1,0 +1,204 @@
+{
+    "totalDataOLD": [
+        {
+            "totalDataX": "南京市",
+            "totalDataY": 34
+        },
+        {
+            "totalDataX": "苏州市",
+            "totalDataY": 28
+        },
+        {
+            "totalDataX": "连云港",
+            "totalDataY": 12
+        },
+        {
+            "totalDataX": "宿迁市",
+            "totalDataY": 32
+        },
+        {
+            "totalDataX": "常州市",
+            "totalDataY": 23
+        },
+        {
+            "totalDataX": "无锡市",
+            "totalDataY": 8
+        },
+        {
+            "totalDataX": "淮安市",
+            "totalDataY": 16
+        },
+        {
+            "totalDataX": "徐州市",
+            "totalDataY": 13
+        },
+        {
+            "totalDataX": "南通市",
+            "totalDataY": 42
+        },
+        {
+            "totalDataX": "镇江市",
+            "totalDataY": 18
+        },
+        {
+            "totalDataX": "盐城市",
+            "totalDataY": 28
+        },
+        {
+            "totalDataX": "扬州市",
+            "totalDataY": 23
+        },
+        {
+            "totalDataX": "泰州市",
+            "totalDataY": 17
+        }
+    ],
+    "totalData": [
+        {
+            "totalDataX":["南京市", "苏州市", "连云港", "宿迁市", "常州市", "无锡市", "淮安市", "徐州市", "南通市", "镇江市", "盐城市", "扬州市", "泰州市"],
+            "totalDataY":[34, 28, 12, 32, 23, 8, 16, 42, 18, 28, 23, 13, 17]
+        }
+    ],
+    "pieData": [
+        {
+            "pieDataX": ["网络断线", "时间不同步", "终端损坏", "其他"],
+            "pieDataY": [{
+                value: 335,
+                name: "网络断线"
+            }, {
+                value: 310,
+                name: "时间不同步"
+            }, {
+                value: 234,
+                name: "终端损坏"
+            }, {
+                value: 548,
+                name: "其他"
+            }]
+        }
+    ],
+    "lineData": [
+        {
+            "lineDataX": "09:30",
+            "lineDataY": 10
+        }, {
+            "lineDataX": "09:31",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:32",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:34",
+            "lineDataY": 16
+        }, {
+            "lineDataX": "09:35",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:36",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:37",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:38",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 16
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 16
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 16
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 16
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 16
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 16
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }, {
+            "lineDataX": "09:33",
+            "lineDataY": 0
+        }
+    ]
+
+}
