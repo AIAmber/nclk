@@ -1,0 +1,7 @@
+/*列表顶部搜索按钮*/
+.search-btn.clearfix{margin-right: -6px;}
+/*修改授时服务器配置弹出框*/
+.bootstrap-dialog-footer{float: right;}
+.btn-model-diy{width: 60px;} 
+.timeServerConfig-dialog .modal-dialog{width: 480px;height: 400px;}
+

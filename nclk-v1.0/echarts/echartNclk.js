@@ -274,8 +274,10 @@ $.ajax({
                 totalDataYs.push(item.totalDataY[i]);
             }
         });
-
+        
+        setTimeout("pause()",2000); //暂停0.5s
         myChartTotal.hideLoading();
+        
         myChartTotal.setOption({ //加载数据图表
             xAxis: {
                 data: totalDataXs
@@ -314,8 +316,8 @@ $.ajax({
                 pieDataYs.push(item);
             });
         });
-
-
+        
+        setTimeout("pause()",500); //暂停0.5s
         myChartPie.hideLoading();
 
         myChartPie.setOption({ //加载数据图表
@@ -363,8 +365,10 @@ $.ajax({
                 lineDataYs.push(item);
             });
         });
-
+        
+        setTimeout("pause()",500); //暂停0.5s
         myChartLine.hideLoading();
+        
         myChartLine.setOption({ //加载数据图表
             xAxis: {
                 data: lineDataXs

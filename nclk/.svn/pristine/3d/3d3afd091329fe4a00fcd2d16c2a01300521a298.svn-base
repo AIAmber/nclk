@@ -1,0 +1,68 @@
+package cn.com.sparknet.nclk.init;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.stereotype.Component;
+import org.w3c.dom.Element;
+
+import cn.com.sparknet.common.util.CacheUtil;
+import cn.com.sparknet.common.util.XMLUtil;
+import cn.com.sparknet.nclk.bean.ModuleTree;
+
+/**
+ * 初始化属性配置文件
+ * @author chenxy
+ *
+ */
+@Component
+public class InitModules {
+	
+	private final static String CONFIG_CACHE_NAME = "ConfigCache";
+	
+	private List<String> configFileNames=new ArrayList<String>();
+	
+	public InitModules(){
+		configFileNames.add("module.xml");
+	}
+	
+	@PostConstruct
+	private void init() {
+        try {
+        	//将所有上方已配置的属性文件加入至缓存
+        	CacheUtil cacheUtil = CacheUtil.getInstance();
+        	cacheUtil.addCache(CONFIG_CACHE_NAME);
+        	//存放所有模块对象集合
+        	List<ModuleTree> moduleList = new ArrayList<>();
+        	if(configFileNames.size() > 0){
+        		InputStream is = InitModules.class.getClassLoader().getResourceAsStream(configFileNames.get(0));
+        		//获取根节点元素
+        		Element ele = XMLUtil.getRootElement(is);
+        		//根据根节点 获取一级子节点
+        		Element [] firstChildNode = XMLUtil.getChildElements(ele);
+        		//遍历一级子节点
+        		for (int i = 0; i < firstChildNode.length; i++) {
+        			Element [] secondChildNode = XMLUtil.getChildElements(firstChildNode[i]);
+        			ModuleTree moduleTree = new ModuleTree();
+        			for (int j = 0; j < secondChildNode.length; j++) {
+        				//获取属性值,构造module对象
+        				moduleTree.setModuleId(XMLUtil.getElementValue(secondChildNode[0]));
+        				moduleTree.setModuleName(XMLUtil.getElementValue(secondChildNode[1]));
+        				moduleTree.setModuleUrl(XMLUtil.getElementValue(secondChildNode[2]));
+        				moduleTree.setParentModuleId(XMLUtil.getElementValue(secondChildNode[3]));
+        				moduleTree.setModuleIcon(XMLUtil.getElementValue(secondChildNode[4]));
+					}
+        			moduleList.add(moduleTree);
+				}
+        	}
+        	//将module对象集合存入cache中
+        	cacheUtil.getCache(CONFIG_CACHE_NAME).put(new net.sf.ehcache.Element("menu", moduleList));
+        } catch (Exception e) {
+        	throw new RuntimeException(e.getMessage(),e);
+        }
+	}
+
+}

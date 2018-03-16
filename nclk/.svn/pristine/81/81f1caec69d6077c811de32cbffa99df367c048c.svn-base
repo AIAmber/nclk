@@ -1,0 +1,26 @@
+package cn.com.sparknet.nclk.dao;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
+import cn.com.sparknet.common.dao.BaseDao;
+
+/**
+ * 系统登录
+ * @author wuyl
+ *
+ */
+@Repository
+public class LoginDao {
+	
+	@Resource
+    private BaseDao baseDao;
+	
+	
+	
+	
+	
+	
+
+}

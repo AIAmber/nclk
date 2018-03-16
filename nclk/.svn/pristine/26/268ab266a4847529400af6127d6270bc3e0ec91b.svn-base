@@ -1,0 +1,30 @@
+<ehcache>
+
+  	<!--java.io.tmpdir（系统temp文件目录(默认)）、user.dir（用户当前的工作目录）、user.home（用户主目录）-->
+    <diskStore path="java.io.tmpdir"/>
+    
+  	<!-- 
+		maxElementsInMemory             -内存管理的缓存元素数量最大限值
+		eternal                         -设定元素是否持久话。true则缓存元素不会过期
+		timeToIdleSeconds               -设定元素在过期前空闲状态的时间，只对非持久性缓存对象有效。默认值为0,值为0意味着元素可以闲置至无限长时间
+		timeToLiveSeconds               -设定元素从创建到过期的时间。其他与timeToIdleSeconds类似
+		overflowToDisk                  -设定是否在内存填满的时候把数据转到磁盘上
+		diskSpoolBufferSizeMB           -存入磁盘时的缓冲区大小，默认30MB,每个缓存都有自己的缓冲区
+		maxElementsOnDisk               -元素值超过限定值时将存储到磁盘上。默认值为0，就是没有限制
+		diskPersistent                  -设定在虚拟机重启时是否进行磁盘存储，默认为false
+		diskExpiryThreadIntervalSeconds -访问磁盘线程活动时间
+		memoryStoreEvictionPolicy       -元素逐出缓存规则:Least Recently Used(LRU)最近最少使用(默认)、First In First Out (FIFO)先进先出、Less Frequently Used(LFU)最少使用
+  	-->
+    <defaultCache 
+        maxElementsInMemory="10000"
+        eternal="true"
+        timeToIdleSeconds="0"
+        timeToLiveSeconds="0"
+        overflowToDisk="true"
+        diskSpoolBufferSizeMB="30"
+        maxElementsOnDisk="10000000"
+        diskPersistent="false"
+        diskExpiryThreadIntervalSeconds="120"
+        memoryStoreEvictionPolicy="LRU"/>
+
+</ehcache>
