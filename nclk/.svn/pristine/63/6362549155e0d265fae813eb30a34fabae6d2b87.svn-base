@@ -1,0 +1,50 @@
+/*用户管理模态框  */
+.userAddDialog .modal-dialog{
+    height:650px;
+    width:775px;
+}
+.passwordDialog .modal-dialog{
+  height:50%;
+  width:500px;
+}
+.authorityDialog .modal-dialog{
+  height:50%;
+  width:500px;
+}
+.manageAreaDialog .modal-dialog{
+  height:550px;
+  width:305px;
+}
+.exampointerDialog .modal-dialog{
+  height:650px;
+  width:500px;
+}
+.areaCommandDialog .modal-dialog{
+  height:50%;
+  width:415px;
+}
+.areaUpDialog .modal-dialog{
+  height:522px;
+  width:400px;
+}
+.userAddDialog .bootstrap-dialog-footer-buttons{
+  margin-top:485px;
+} 
+.table-toolbar-search{
+  height:32px;
+}
+
+ 
+/*资源分类页面样式*/
+.area-content{position: relative;height: 100%;margin-bottom: 0px}
+.area-tree{width: 230px;position: absolute;top: 0px;left: 0px;height: 100%;overflow-y: auto;}
+.area-table{margin-left: 350px;padding-left: 20px}
+ul.nav-tabs-underline li.active a:focus{border: 0px;background-color: white;}
+.area-tree{margin-top: -1px;width:330px;}
+.area-tree .panel-body{padding-left: 14px;margin-top: 4px;}
+.area-tree .title{font-size: 15px}
+.area-tree .panel-heading{background-color: #f5f5f4; border: 0px;}
+.area-tree .panel-default{border-radius: 2px; border-color: white; box-shadow: none;margin: 0px;}
+.area-tree .btns{margin-right: -10px;}
+.area-tree .font-btn{margin-right: 10px;cursor: pointer;}
+.area-tree .update{font-size: 16px}

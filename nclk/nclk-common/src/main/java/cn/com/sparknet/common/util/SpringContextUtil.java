@@ -7,35 +7,39 @@ import org.springframework.stereotype.Component;
 
 /**
  * Spring Context工具类
+ *
  * @author chenxy
- * 
  */
 @Component
 public class SpringContextUtil implements ApplicationContextAware {
 
-	private static ApplicationContext applicationContext;
-	
-	/**
-	 * 设置ApplicationContext
-	 * 容器加载后由Spring自动注入applicationContext
-	 */
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		SpringContextUtil.applicationContext = applicationContext;
-	}
-	
-	/**
-	 * 获取ApplicationContext
-	 */
-	public ApplicationContext getApplicationContext() throws BeansException {
-		return applicationContext;
-	}
+    private static ApplicationContext applicationContext;
 
-	/**
-	 * 获取Bean
-	 */
-	public Object getBean(String name) throws BeansException {
-		return applicationContext.getBean(name);
-	}
+    /**
+     * 设置ApplicationContext
+     * 容器加载后由Spring自动注入applicationContext
+     */
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        SpringContextUtil.applicationContext = applicationContext;
+    }
+
+    /**
+     * 获取ApplicationContext
+     */
+    public ApplicationContext getApplicationContext() throws BeansException {
+        return applicationContext;
+    }
+
+    /**
+     * 获取Bean
+     */
+    public Object getBean(String name) throws BeansException {
+        return applicationContext.getBean(name);
+    }
+
+    public static <T> T getBean(Class<T> clz) {
+        return applicationContext.getBean(clz);
+    }
 
 }

@@ -17,5 +17,9 @@ public interface ModuleService {
 	 */
 	public List<Map<String, Object>> findModuleByUserName(String userName);
 	
-	
+	/**
+	 * 权限模块获取
+	 * @return
+	 */
+	public String getModuleInfo();
 }

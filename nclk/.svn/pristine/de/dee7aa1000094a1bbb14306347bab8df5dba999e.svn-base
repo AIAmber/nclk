@@ -1,0 +1,10 @@
+package cn.com.sparknet.nclk.service;
+
+/**
+ * 考点管理
+ * @author wuyl
+ *
+ */
+public interface EndPointService {
+
+}

@@ -1,0 +1,228 @@
+require(['jquery','ztree','Util','bootstrap-dialog','bootstrap-grid','table-toolbar','jquery-validate','jquery-validate-messages-zh'], function($,ztree,Util,BootstrapDialog) {
+	
+	
+	//-------------------------左侧树
+    var selectedNode;
+	var setting = {
+			view:{
+				dblClickExpand: false,
+				showLine: false,
+				showIcon: false,
+				selectedMulti: false
+			},
+			async: {
+				enable: true,
+				url:Util.getPath()+"/manage/data/tree.json",
+				autoParam:["id", "name=n"],
+				otherParam:{"otherParam":"zTreeAsyncTest"},
+				dataFilter: function(treeId, parentNode, childNodes){
+					return childNodes.rows;
+				}
+			}, 
+			data: {
+			    simpleData: {
+			        enable: true
+			    }
+			},
+			callback:{
+				onClick:function(event, treeId, treeNode){
+					gridTable.resetSearch();
+				}
+			}
+        };
+
+	var tree = $.fn.zTree.init($("#area_tree"), setting);
+	
+	//新增
+	$("#tree-add").on("click",function(){
+		dialog.setTitle("新增区域管理");
+		dialog.open();
+	});
+	
+	//修改
+	$("#tree-update").on("click",function(){
+		var nodes = tree.getSelectedNodes();
+		if(nodes.length == 0){
+			Util.warningDialog('尚未选择数据，请选择！');
+			return;
+		}
+		dialog.setTitle("修改区域管理");
+		dialog.open();
+	});
+	
+	//删除
+	$("#tree-del").on("click",function(){
+		var nodes = tree.getSelectedNodes();
+		if(nodes.length == 0){
+			Util.warningDialog('尚未选择数据，请选择！');
+			return;
+		}
+		Util.questionDialog('确定删除数据？',function(dialog, result){
+			if(result){
+				//TODO　这里调用后台
+				Util.promptSuccessDialog('删除资源分类信息成功！');
+			}
+			dialog.close();
+		});
+	});
+	
+	//--------------------------------右侧列表
+	
+	var tableToolbar = $(".table-toolbar").toolbar({
+		searchEvent:function(){
+			gridTable.resetSearch();
+		}
+	});
+	
+	var gridTable = $('#areaGrid').bootstrapGrid({
+			url:Util.getPath()+"/manage/data/area.json",
+			uniqueId:'id',
+			toolbarc:tableToolbar,
+			skipPart:false,
+			customHeight:64,
+			columns:[{
+		        checkbox: true,
+		        width:'32%',
+		    }, {
+		    	visible:false,
+		        field: 'id',
+		        title: '主键',
+		    }, {
+		        field: 'commandCenter',
+		        title: '市级指挥中心',
+		        width:"52%",
+		    }, {
+		    	field: 'id',
+		        title: '操作',
+		    	formatter:function(value,row,index){
+		    		 return [
+	    		         '<a class="table-operation table-operation-edit fa fa-pencil-square-o" href="javascript:void(0)" title="修改"></a>',
+	    		         '<a data-id="'+value+'" class="table-operation table-operation-del fa fa-trash-o" href="javascript:void(0)" title="删除"></a>'
+	    		     ].join('');
+		        }
+		    }]
+		});
+		
+	//修改
+	$(".bootstrap-table").on("click",".table-operation-edit",function(){
+		var $this = $(this);
+		dialog.setTitle("修改区域管理");
+		dialog.open();
+	});
+	
+	//删除
+	$(".bootstrap-table").on("click",".table-operation-del",function(){
+		var $this = $(this);
+		Util.questionDialog('确定删除数据？',function(dialog, result){
+			if(result){
+				var id = $this.attr("data-id");
+				var row = gridTable.table("getRowByUniqueId",id);
+				//TODO　这里调用后台
+				Util.promptSuccessDialog('删除资源分类信息成功！');
+			}
+			dialog.close();
+		});
+	});
+	
+	$("#btn-delete").click(function(){
+		var items = gridTable.table('getSelections');
+		if(items.length==0){
+			Util.warningDialog('尚未选择数据，请选择！');
+		}else{
+			Util.questionDialog('确定删除数据？',function(dialog, result){
+				if(result){
+					//TODO　这里调用后台
+					Util.promptSuccessDialog('删除资源分类信息成功！');
+				}
+				dialog.close();
+			});
+		}
+	});
+	
+	//-----------------------------弹出表单部分
+	
+	$.fn.zTree.init($("#treeContentDemo"), $.extend({},setting,{callback:{
+		onClick:function(event, treeId, treeNode){
+			selectedNode = treeNode;
+		}
+	}}));
+	var nodeInfoInput= $("#selected-node-info");
+	var addInfoForm= $("#add-info");
+	var validator = Util.validate("add-info",{
+		messages:{
+			name:{
+				required:'请输入资源分类名称'
+			},
+			code:{
+				required:'请输入资源分类名称'
+			}
+		}
+	});
+	var dialog = new BootstrapDialog({
+		title: '新增区域管理',
+        message: $('#modelContent'),
+        type:'type-default',
+        closeByBackdrop: false,
+        closeByKeyboard: false,
+        autodestroy: false,
+        draggable:true,
+        cssClass:'areaCommandDialog',
+        buttons: [{
+        	id:"savebtn",
+            label: '保存',
+            icon: 'glyphicon glyphicon-check',
+            cssClass:'btn-success btn-sm',
+            action: function(dialogRef){
+            	if(!addInfoForm.valid()){
+            		validator.focusInvalid();
+            		return;
+            	}
+            	addInfoForm[0].reset();
+            	dialogRef.close();
+            }
+        },{
+            label: '取消',
+            icon:'glyphicon glyphicon-remove',
+            cssClass:'btn-default btn-sm',
+            action: function(dialogRef){
+            	addInfoForm[0].reset();
+            	validator.resetForm();
+            	dialogRef.close();
+            }
+        }]
+    });
+    
+    var selectTree = new BootstrapDialog({
+		title: '选择上级区域',
+		type:'type-default',
+        message: $("#treeContent"),
+		autodestroy:false,
+        closeByBackdrop: false,
+        closeByKeyboard: false,
+        draggable:true,
+        cssClass:'areaUpDialog',
+        buttons: [{
+        	id:"savebtn",
+            label: '选择',
+            icon: 'glyphicon glyphicon-check',
+            cssClass:'btn-success btn-sm',
+            action: function(dialogRef){
+            	nodeInfoInput.val(selectedNode.name);
+            	addInfoForm.validate().element(nodeInfoInput);
+            	dialogRef.close();
+            }
+        },{
+            label: '取消',
+            icon:'glyphicon glyphicon-remove',
+            cssClass:'btn-default btn-sm',
+            action: function(dialogRef){
+            	dialogRef.close();
+            }
+        }]
+    });
+	
+	$("#btn-show-select-tree").click(function(){
+		selectTree.open();
+	});
+	
+});

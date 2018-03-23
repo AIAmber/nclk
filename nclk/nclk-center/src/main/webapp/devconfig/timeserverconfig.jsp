@@ -18,21 +18,15 @@
 					<form class="form-inline clearfix">
 						<ul>
 							<li class="form-group">
-								<select class="form-control pull-left" style="width: 10px;">
-							    	<option selected="selected" value=""></option>
-						   		    <option>江苏省</option>
+								<select class="form-control pull-left" style="width: 10px;" id="province">
 						   	    </select>
 							</li>
 							<li class="form-group">
-								<select class="form-control pull-left" name="" style="width:100px;">
-							    	<option selected="selected" value=""></option>
-						   		    <option>南京市</option>
+								<select class="form-control pull-left" style="width:100px;" id="city">
 						   	    </select>
 							</li>
 							<li class="form-group">
-								<select class="form-control pull-left" name="" style="width:100px;">
-							    	<option selected="selected" value=""></option>
-						   		    <option>建邺区</option>
+								<select class="form-control pull-left" style="width:100px;" id="district">
 						   	    </select>
 							</li>
 							<li class="form-group">
@@ -41,13 +35,14 @@
 						</ul>
 					</form>
 					<div class="search-btn clearfix">
-						<div class="pull-left">
-							<a href="javascript:void(0)" class="searchBtn glyphicon glyphicon-search"></a>
+						<div class="">
+							<a href="javascript:void(0);" class="searchBtn glyphicon glyphicon-search"></a>
 						</div>
 					</div>
 				</div>
 				<div class="btn-group btn-group-sm table-toolbar-btn-group">
-			 		<button id="btn-add" role="group" type="button" class="btn btn-default"><span class='glyphicon glyphicon-plus'></span>&nbsp;新增</button>
+					<button id="btn-search" role="group" type="button" class="btn btn-default"><span class='glyphicon glyphicon glyphicon-search'></span>&nbsp;自动检索</button>
+			 		<button id="btn-add" role="group" type="button" class="btn btn-default"><span class='glyphicon glyphicon-plus'></span>&nbsp;手动添加</button>
 			 	 	<button id="btn-delete" role="group" type="button" class="btn btn-default"><span class='glyphicon glyphicon-trash'></span>&nbsp;删除</button>
 				</div>
 	  		</div>
@@ -60,7 +55,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label"><font class="red">*</font>设备编号</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="name" required="" readonly="readonly">
+					<input type="text" class="form-control" name="name" required="" >
 				</div>
 			</div>
 			<div class="form-group">
@@ -77,25 +72,25 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">当前时间</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="" value="12:12:30">
+					<input type="text" class="form-control" name="" value="">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">授时ip地址</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="" value="192.168.1.3">
+					<input type="text" class="form-control" name="" value="">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">设备状态</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="" value="正常">
+					<input type="text" class="form-control" name="" value="">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">所属考点</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="" value="南京市金陵中学">
+					<input type="text" class="form-control" name="" value="">
 				</div>
 			</div>
 			<div class="form-group">
@@ -105,6 +100,31 @@
 				</div>
 			</div>
 		</form>
+	</div>
+	<!-- 设备状态异常弹出框  -->
+	<div style="display: block;">
+	<div class="block-message" id="machineerrorinfo">
+		<div class="block-content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>地址</th>
+						<th>负责人</th>
+						<th>联系电话</th>
+					</tr>
+				</thead>
+				<tbody>
+			        <tr>
+			          <td scope="row">1</td>
+			          <td>南京市鼓楼区健康路3号</td>
+			          <td>吕唯一</td>
+			          <td>15052525263</td>
+			        </tr>
+	      		</tbody>
+			</table>
+		</div>
+	</div>
 	</div>
 </body>
 </html>

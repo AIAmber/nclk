@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/nclk-center" />
+    <file type="web" url="file://$PROJECT_DIR$/nclk-common" />
+    <file type="web" url="file://$PROJECT_DIR$/nclk-endpoint" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/classes" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://svn-rd.sparknet.com.cn/svn/999%E9%83%A8%E9%97%A8%E7%AE%A1%E7%90%86/03%E5%BA%94%E7%94%A8%E7%A0%94%E5%8F%91%E9%83%A8%E9%97%A8/%E5%BA%94%E7%94%A8%E7%A0%94%E5%8F%91%E4%B8%80%E9%83%A8/public/10%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/nclk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+</project>

@@ -1,0 +1,21 @@
+package cn.com.sparknet.nclk.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import cn.com.sparknet.nclk.dao.EndPointDao;
+import cn.com.sparknet.nclk.service.EndPointService;
+
+/**
+ * 考点管理
+ * @author wuyl
+ *
+ */
+@Service
+public class EndPointServiceImpl implements EndPointService{
+	
+	@Resource
+	private EndPointDao endPointDao;
+
+}

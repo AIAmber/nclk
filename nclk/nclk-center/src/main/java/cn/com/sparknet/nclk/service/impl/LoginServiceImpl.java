@@ -78,9 +78,12 @@ public class LoginServiceImpl implements LoginService {
 			Map<String,Object> map,String password,boolean errorCountValid,long errorCount,long currentErrorCount) {
 		try{
 			if(MD5Util.encrypt(password).equals(map.get("PASSWORD"))){
-				session.setAttribute("user", map);
 				//更新用户登录时间、登录错误次数
 				loginDao.updateUserLoginInfo(map.get("USER_ID").toString(),0,"A");
+				//将用户姓名存入session中
+				session.setAttribute("NAME", map.get("NAME"));
+				//将用户ID存入session中
+				session.setAttribute("USER_ID", map.get("USER_ID"));
 				editJson.setSuccess(true);
 			}else{
 				if(errorCountValid==true){

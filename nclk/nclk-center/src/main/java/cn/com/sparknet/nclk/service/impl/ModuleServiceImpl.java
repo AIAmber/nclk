@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.mysql.jdbc.Buffer;
+
 import cn.com.sparknet.nclk.dao.ModuleDao;
 import cn.com.sparknet.nclk.service.ModuleService;
 
@@ -33,6 +35,25 @@ public class ModuleServiceImpl implements ModuleService{
 			throw new RuntimeException(e.getMessage(),e);
 		}
 		return list;
+	}
+
+	/**
+	 *权限模块获取
+	 */
+	@Override
+	public String getModuleInfo() {
+		List<Map<String, Object>> list=moduleDao.getModuleInfo();
+		StringBuffer buffer =new StringBuffer();
+		buffer.append("[");
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).get("PARENT_MODULE_ID")=="") {
+				buffer.append("{\"id\":\""+list.get(i).get("MODULE_ID")+"\" ,\"pId\":\""+list.get(i).get("MODULE_ID")+"\" ,\"name\":\""+list.get(i).get("MODULE_NAME")+"\",");
+			}else {
+				buffer.append("{\"id\":\""+list.get(i).get("MODULE_ID")+"\" ,\"pId\":\""+list.get(i).get("MODULE_ID")+"\" ,\"name\":\""+list.get(i).get("MODULE_NAME")+"\",");
+			}
+		}
+		buffer.append("[");
+		return buffer.toString();
 	}
 	
 

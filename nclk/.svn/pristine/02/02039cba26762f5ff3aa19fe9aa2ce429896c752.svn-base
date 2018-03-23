@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%String path =  request.getContextPath(); %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>网络时钟终端配置</title>
+</head>
+<body>
+	<script src="<%=path %>/devconfig/js/clockterminalconfig.js"></script>
+	<link href="<%=path %>/devconfig/css/devconfig.css" rel="stylesheet">
+	<fieldset>
+		<div class="clearfix tab-content">
+	  		<div class="table-toolbar clearfix" id="toolbar-cataloged" >
+				<div class="table-toolbar-search pull-left clearfix" style="padding-right: 30px;">
+					<form class="form-inline clearfix">
+						<ul>
+							<li class="form-group">
+								<select class="form-control pull-left" style="width:100px;" id="province">
+						   	    </select>
+							</li>
+							<li class="form-group">
+								<select class="form-control pull-left" style="width:100px;" id="city">
+						   	    </select>
+							</li>
+							<li class="form-group">
+								<select class="form-control pull-left" style="width:100px;" id="district">
+						   	    </select>
+							</li>
+							<li class="form-group">
+								<select class="form-control pull-left" style="width:100px;" id="endpoint">
+						   	    </select>
+							</li>
+							<li class="form-group">
+                            	<input class="form-control form-control-large pull-left" placeholder="" style="width: 250px"/>
+                        	</li>
+						</ul>
+					</form>
+					<div class="search-btn clearfix">
+						<div class="pull-left">
+							<a href="javascript:void(0)" class="searchBtn glyphicon glyphicon-search"></a>
+						</div>
+					</div>
+				</div>
+				<div class="btn-group btn-group-sm table-toolbar-btn-group">
+					<button id="btn-search" role="group" type="button" class="btn btn-default"><span class='glyphicon glyphicon glyphicon-search'></span>&nbsp;自动搜索</button>
+			 		<button id="btn-add" role="group" type="button" class="btn btn-default"><span class='glyphicon glyphicon-plus'></span>&nbsp;手动添加</button>
+			 	 	<button id="btn-delete" role="group" type="button" class="btn btn-default"><span class='glyphicon glyphicon-log-in'></span>&nbsp;导入</button>
+				</div>
+	  		</div>
+	  		<table id="grids-clockterminalconfig" data-undefined-text="没有检索到数据"></table>
+		</div>
+	</fieldset>
+</body>
+</html>

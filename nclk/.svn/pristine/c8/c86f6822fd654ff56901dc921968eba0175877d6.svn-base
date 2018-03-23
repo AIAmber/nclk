@@ -1,0 +1,124 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%String path =  request.getContextPath(); %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>考点管理</title>
+</head>
+<body>
+	 <link href="<%=path %>/manage/css/manage.css" rel="stylesheet">
+  <script src="<%=path %>/manage/js/exampointer.js"></script>
+  <div class="panel panel-default panel-nobody ">
+     <div class="table-toolbar clearfix">
+        <div class="btn-group btn-group-sm pull-right">
+            <button id="btn-add" class="btn btn-default"><span class='glyphicon glyphicon-plus'></span>&nbsp;新增</button>
+            <button id="btn-del" class="btn btn-default"><span class='glyphicon glyphicon-trash'></span>&nbsp;删除</button>
+        </div>
+        <div class="table-toolbar-search pull-left clearfix">
+          <form class="form-inline clearfix">
+            <ul>
+                <li class="form-group">
+                    <select class="form-control">
+                        <option selected="selected" value=""></option>
+                        <option>江苏省</option>
+                    </select>
+                </li>
+                <li class="form-group">
+                    <select class="form-control">
+                        <option selected="selected" value=""></option>
+                        <option>南京市</option>
+                        <option>镇江市</option>
+                        <option>苏州市</option>
+                    </select>
+                </li>
+                <li class="form-group">
+                    <select class="form-control" >
+                        <option selected="selected" value=""></option>
+                        <option>全部</option>
+                        <option>建邺区</option>
+                        <option>江宁区</option>
+                    </select>
+                </li>
+                <li class="form-group">
+                    <input type="text" class="form-control form-control-large pull-left" style="width: 250px" placeholder="请输入考点编号/考点名称搜索"/>
+                </li>
+            </ul>
+          </form>
+        </div>
+     </div>
+     <table id="exampointerGrid" data-undefined-text="没有检索到数据"></table>
+  </div>
+  <div style="display:none">
+      <form action="" class="form-horizontal" id="exampointerAddForm" style="width:587px;margin-left:-55px;">
+          <div class="form-group">
+              <label for="examName" class="control-label col-sm-4">考点名称</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control"/>
+              </div>
+          </div>   
+          <div class="form-group">
+              <label for="examNum" class="control-label col-sm-4">考点编号</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control"/>
+              </div>
+          </div>   
+          <div class="form-group">
+              <label for="examArea" class="control-label col-sm-4">所属区域</label>
+              <div class="form-inline col-sm-6">
+                  <select class="form-control" style="width:90px;">
+                      <option selected="selected"></option>
+                      <option>江苏省</option>
+                  </select>
+                  <select class="form-control"style="width:90px;">
+                      <option selected="selected"></option>
+                      <option>南京市</option>
+                  </select>
+                  <select class="form-control"style="width:90px;">
+                      <option selected="selected"></option>
+                      <option>全部</option>
+                      <option>建邺区</option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="examAddress" class="control-label col-sm-4">考点地址</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control"/>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="examPerson" class="control-label col-sm-4">考点负责人</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control"/>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="examPhone" class="control-label col-sm-4">考点负责人电话</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control"/>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="examIPAddress" class="control-label col-sm-4">考点服务器IP</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control"/>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="examPort" class="control-label col-sm-4">考点服务器端口</label>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control"/>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="number" class="control-label col-sm-4">顺序号</label>
+              <div class="col-sm-6">
+                  <input type="number" class="form-control"/>
+              </div>
+          </div>
+      </form>
+  </div>
+</body>
+</html>

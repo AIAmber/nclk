@@ -34,4 +34,13 @@ public class ModuleDao {
 		sql.append(" AND U.USERNAME = ? ");
 		return baseDao.findListBySql(sql.toString(), new Object[]{username});
 	}
+	
+	/**
+	 * 权限模块获取
+	 * @return
+	 */
+	public List<Map<String,Object>> getModuleInfo(){
+		String sql="SELECT MODULE_ID,PARENT_MODULE_ID,MODULE_NAME FROM T_NCLK_MODULE";
+		return baseDao.findListBySql(sql, new Object[] {});
+	} 
 }

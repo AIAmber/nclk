@@ -1,5 +1,11 @@
-define(['jquery','bootstrap','bootstrap-dialog'],function($,bootstrap,bootstrapDialog){
-	 $(function() {
+define(['jquery','Util','bootstrap','bootstrap-dialog'],function($,Util,bootstrap,bootstrapDialog){
+	
+	//获取项目路径
+	function getPath(){
+		return location.pathname.match(/\/(.+?)(?=\/)/g)[0];
+	}
+	
+	$(function() {
 		/*左侧导航栏显示隐藏功能*/
 		 $(".subNav").click(function() {
 				if(this != $(".subNav.sublist-down")[0]){
@@ -79,6 +85,34 @@ define(['jquery','bootstrap','bootstrap-dialog'],function($,bootstrap,bootstrapD
 		location.href= location.pathname.match(/\/(.+?)(?=\/)/g)[0] + "/LoginController/loginOut";
 	});
 	
+	//修改用户密码表单校验代码
+	var changepasswordformValidate = Util.validate("changepwd",{
+		rules :{
+			password:{
+				required:true
+			},
+			newpassword: {
+				required:true
+			},
+			confirmpassword: {
+				required:true,
+				equalTo: "#newpassword"
+			}
+		},
+		messages: {
+			newpassword:{
+				required:"密码不能为空"
+			},
+			infoType: {
+				required:"新密码不能为空"
+			},
+			confirmpassword: {
+				required:"确认密码不能为空",
+				equalTo:"新密码与确认密码不一致"
+			}
+		}
+	});
+	
 	//修改密码
 	var userAddForm=$("#changepasswordform");
 	var changePasswordDialog=new bootstrapDialog({
@@ -88,6 +122,7 @@ define(['jquery','bootstrap','bootstrap-dialog'],function($,bootstrap,bootstrapD
         closeByBackdrop: false,
         closeByKeyboard: false,
         autodestroy:false,
+        closable: false, //控制弹出框拉右上角是否显示 ‘x' 默认为true
         draggable:true,
         cssClass:'changePasswordDialog',
         buttons: [{
@@ -97,13 +132,33 @@ define(['jquery','bootstrap','bootstrap-dialog'],function($,bootstrap,bootstrapD
             icon: 'glyphicon glyphicon-check',    
             cssClass:' btn-success btn-sm',
             action: function(dialogRef){
-            	/*var validator = Util.validate("userAddForm");
-     			if(!userAddForm.valid()){
-     				userAddInfo.focusInvalid()
-     				return;
-     			}*/
-     			dialogRef.close();
-     			//$("#userAddForm")[0].reset();
+            	var flag = $("#changepwd").valid();
+        		if(flag==false){
+        			changepasswordformValidate.focusInvalid();
+        		}else{
+        			$.ajax({
+        			    method: 'post',
+        			    url: getPath()+'/UserController/updatePassword',
+        			    dataType: 'text',
+        			    // 用户名和密码
+        			    data: {
+        			    	password: $("[name='password']").val(),
+        			    	newpassword: $("[name='newpassword']").val(),
+        			    	userid : $("[name='userid']").val()
+        			    },
+        			    success: function(data){
+        			        //假设后端传回的 1 表示成功， 0 表示用户名或密码错误
+        			        if (JSON.parse(data).success) {
+        			        	dialogRef.close();
+        			        	Util.promptSuccessDialog("修改密码成功!");
+        			        	$("#changepwd")[0].reset();
+        			        } else {
+        			        	Util.warningDialog(JSON.parse(data).bean);
+        			        	$("#changepwd")[0].reset();
+        			        }
+        			    }
+        			});
+        		}
             }
         },{
             label: '取消',
@@ -111,6 +166,7 @@ define(['jquery','bootstrap','bootstrap-dialog'],function($,bootstrap,bootstrapD
             icon:'glyphicon glyphicon-remove',
             cssClass:' btn-default btn-sm',
             action: function(dialogRef){
+            	$("#changepwd")[0].reset();
             	changePasswordDialog.close();
             }
         }]
@@ -118,48 +174,6 @@ define(['jquery','bootstrap','bootstrap-dialog'],function($,bootstrap,bootstrapD
 	
 	$("#changepassword").on("click",function(){
 		changePasswordDialog.open();
-	});
-	
-	//修改用户信息
-	//修改密码
-	var userAddForm=$("#changeuserinfo");
-	var userinfoDialog=new bootstrapDialog({
-		type:'type-default',
-		title:'修改个人信息',
-        message: $("#changeuserinfo").children(),
-        closeByBackdrop: false,
-        closeByKeyboard: false,
-        autodestroy:false,
-        draggable:true,
-        cssClass:'changeuserinfo',
-        buttons: [{
-        	id:'savebtn',
-            label: '提交',
-            autospin: false,
-            icon: 'glyphicon glyphicon-check',    
-            cssClass:' btn-success btn-sm',
-            action: function(dialogRef){
-            	/*var validator = Util.validate("userAddForm");
-     			if(!userAddForm.valid()){
-     				userAddInfo.focusInvalid()
-     				return;
-     			}*/
-     			dialogRef.close();
-     			//$("#userAddForm")[0].reset();
-            }
-        },{
-            label: '取消',
-            autospin: false,
-            icon:'glyphicon glyphicon-remove',
-            cssClass:' btn-default btn-sm',
-            action: function(dialogRef){
-            	userinfoDialog.close();
-            }
-        }]
-	});
-	
-	$("#changeinfo").on("click",function(){
-		userinfoDialog.open();
 	});
 	
 });

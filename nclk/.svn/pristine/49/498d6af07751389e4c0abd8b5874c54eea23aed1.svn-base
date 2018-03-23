@@ -1,0 +1,19 @@
+#Database configuration for MySQL
+center.db.dialect=org.hibernate.dialect.MySQL5Dialect
+center.db.url=jdbc:mysql://192.168.1.147:3306/NCLK?useUnicode=true&characterEncoding=utf-8&useSSL=false
+center.db.validationQuery=select 1
+center.db.poolPreparedStatements=false
+center.db.maxPoolPreparedStatementPerConnectionSize=0
+center.db.showSql=true
+center.db.formatSql=false
+center.db.username=NCLK
+center.db.password=NCLK
+center.db.password.decrypt=false
+#System configuration
+center.system.name = \u6C5F\u82CF\u7701\u6559\u80B2\u8003\u8BD5\u9662\u7F51\u7EDC\u65F6\u949F\u76D1\u63A7\u7CFB\u7EDF
+#System Captcha
+center.system.captcha = true
+#Allow login error count,0 is not limited
+center.login.error.count = 3
+#Temporary file directory
+center.file.tempDirectory=temp/

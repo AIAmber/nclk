@@ -94,9 +94,6 @@
 	              <!-- Menu Footer-->
 	              <li class="user-footer">
 	              	<div class="btn-group">
-	            		<button type="button" class="btn btn-default btn-user-edit" id="changeinfo">
-			    			<i class="fa fa-user user-foot-button" aria-hidden="true">&nbsp;用户信息</i>
-			   		 	</button>
 			    		<button type="button" class="btn btn-default btn-pass-edit" id="changepassword">
 			    			<i class="fa fa-lock user-foot-button" aria-hidden="true">&nbsp;更改密码</i>
 			   			</button>
@@ -142,11 +139,11 @@
 						</li>
 						<li>
 							<div class="showtitle">
-								<img src="common/img/leftimg.png" />异常状态统计
+								<img src="common/img/leftimg.png" />异常信息查询
 							</div>
-							<a href="#/statusstatistics">
+							<a href="#/errorinfo">
 								<span class="sublist-icon glyphicon glyphicon-th"></span>
-								<span class="sub-title">异常状态统计</span>
+								<span class="sub-title">异常信息查询</span>
 							</a>
 						</li>
 					</ul>
@@ -232,7 +229,7 @@
 				<div class="info-center" id="rightContent" style="margin:10px 0px 10px 10px;overflow-x:hidden;overflow-y:auto;"></div>
 			</div>
 			<div class="footer">
-				<span class="footer-span">Copyright © 2012-<span id="currentDate"></span><a class="footer-spanstyle" href="http://www.sparksoft.com.cn" target="_blank"><span>江苏星网软件有限公司</span></a>&nbsp;All Rights Reserved.</span>
+				<span class="footer-span">Copyright © 2012-<span id="currentDate"></span>&nbsp;<a class="footer-spanstyle" href="http://www.sparksoft.com.cn" target="_blank"><span>江苏星网软件有限公司</span></a>&nbsp;All Rights Reserved.</span>
 			</div>
 		</div>
 	</div>
@@ -257,35 +254,6 @@
 			      <input type="password" class="form-control" id="confirmpassword">
 			    </div>
 		    </div>
-		</form>
-	</div>
-	<!-- 修改个人信息 -->
-	<div style="display: none" id="changeuserinfo">
-		<form class="form-horizontal">
-          	<div class="form-group">
-               <label for="userName" class="control-label col-sm-2"><font class="red">*</font>用户名</label>
-               <div class="col-sm-10">
-               		<input type="text" class="form-control " id="userName" name="userName">
-               </div>
-             </div>
-             <div class="form-group">
-             	 <label for="perName" class="control-label col-sm-2">姓名</label>
-	             <div class="col-sm-10">
-	               	<input type="text" class="form-control " id="perName" name="perName">
-	             </div>
-             </div>
-             <div class="form-group">
-               	<label for="userPhone" class="control-label col-sm-2">手机</label>
-             	<div class="col-sm-10">
-                	<input type="tel" class="form-control" id="userPhone" name="userPhone">
-             	 </div>
-            </div>
-            <div class="form-group">
-            	<label for="userEmail" class="control-label col-sm-2">邮箱</label>
-               	<div class="col-sm-10">
-                  	<input type="tel" class="form-control" id="" name="">
-               </div>
-            </div>
 		</form>
 	</div>
 	<script type="text/javascript">

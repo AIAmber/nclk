@@ -25,7 +25,7 @@ public class LoginDao {
 	 */
 	public Map<String,Object> findUser(String username) throws Exception {
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT USER_ID,USERNAME,PASSWORD,LOGIN_ERROR_COUNT,STATE FROM T_NCLK_USER WHERE USERNAME = ? ");
+		sql.append("SELECT USER_ID,NAME,USERNAME,PASSWORD,LOGIN_ERROR_COUNT,STATE FROM T_NCLK_USER WHERE USERNAME = ? ");
 		return baseDao.findMapBySql(sql.toString(),new Object[]{username});
 	}
 	

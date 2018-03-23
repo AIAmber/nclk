@@ -7,7 +7,6 @@ require.config({
 		'bootstrap':'plugins/bootstrap/js/bootstrap.min',
 		'bootstrap-table':'plugins/bootstrap-table/js/bootstrap-table.min',
 		'bootstrap-table-zh-CN':'plugins/bootstrap-table/js/bootstrap-table-zh-CN.min',
-		'bootstrap-table-sticky-header':'plugins/bootstrap-table/js/bootstrap-table-sticky-header.min',
 		'daterangepicker':'plugins/daterangepicker/js/daterangepicker',
 		'daterangepicker-zh-CN':'plugins/daterangepicker/js/daterangepicker.zh-CN',
 		'moment':'plugins/daterangepicker/js/moment.min',
@@ -20,7 +19,6 @@ require.config({
 		'jquery-validate':'plugins/jquery-validate/jquery.validate.min',
 		'jquery-validate-messages-zh':'plugins/jquery-validate/messages_zh',
 		//自定义封装控件
-		'paginator':'js/bootstrap-paginator',
 		'table-toolbar':'js/table-toolbar',
 		'main':'js/main',
 		'bootstrap-grid':'js/bootstrap-grid',
@@ -33,7 +31,6 @@ require.config({
 	shim:{
 		'jquery': {exports: 'jquery'},
 		'bootstrap-table-zh-CN':{'deps':['jquery','bootstrap-table']},
-		'bootstrap-table-sticky-header':['bootstrap-table','css!plugins/bootstrap-table/css/bootstrap-table-sticky-header'],
 		'bootstrap':{'deps':['jquery',
 		             'css!plugins/bootstrap-table/css/bootstrap-table.min',
 		             'css!../common/css/bootstrap-table'
@@ -47,7 +44,6 @@ require.config({
 		'jquery-validate':{'deps':['jquery']},
 		'jquery-validate-messages-zh':['jquery-validate','jquery'],
 		'echarts':['jquery'],
-		'paginator':['jquery','bootstrap'],
 		'bootstrap-dialog':['jquery','bootstrap'],
 		'daterangepicker-zh-CN':['jquery','bootstrap','moment','daterangepicker'],
 		'daterangepicker':['jquery','bootstrap','moment'],

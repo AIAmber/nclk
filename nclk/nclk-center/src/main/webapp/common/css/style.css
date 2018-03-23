@@ -1,5 +1,6 @@
 @charset "utf-8";
 body{font-family: "微软雅黑";}
+ul,li{padding:0;margin:0;}
 
 /*左侧导航栏*/
 .down-main{position: absolute;width: 100%;top: 50px;bottom: 0px;}
@@ -43,9 +44,9 @@ body{font-family: "微软雅黑";}
 .a-back{float:right;color:#666;margin-top: -16px;margin-right: 64px;}
 .right-product-div{height: 30px;}
 .user-foot-button{margin-left: -3px;font-size: 13px;color:#666;}
-.btn-user-edit{width: 82px;}
-.btn-pass-edit{width: 82px;}
-.tn-login-out{width: 65px;}
+.btn-pass-edit{width: 80px;}
+.btn-login-out{width: 80px;}
+.user-footer{text-align: center;}
 
 /***************************************************************/
 

@@ -46,7 +46,7 @@ public class SessionFilter implements Filter {
 		String[] unNeedFilterUrlList = unNeedFilterUrl.split(";");
 		String[] needFilterSuffixList = needFilterSuffix.split(";");
 		String uri = httpServletRequest.getRequestURI();
-		Object sessionBean = httpServletRequest.getSession().getAttribute("user");
+		Object sessionBean = httpServletRequest.getSession().getAttribute("userName");
 		if (sessionBean == null) {
 			if (!this.isContains(uri, needFilterSuffixList)) {
 				chain.doFilter(request, response);

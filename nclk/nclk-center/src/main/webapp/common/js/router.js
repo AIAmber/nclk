@@ -1,4 +1,6 @@
 define(['jquery','Router'],function($,Router){
+	//定义数据对象 记录用到的数据
+	DATA={};
 	return {
 		inint:function(){
 			//创建用户发布正确路由时执行的一些功能。
@@ -15,18 +17,18 @@ define(['jquery','Router'],function($,Router){
 			//运行监控-->实时状态监控
 			var statusmonitor = function() {
 				$("#headnavigation").empty();
-				$("#headnavigation").append("<span>首页&nbsp;/&nbsp;实时状态监控</span>");
+				$("#headnavigation").append("<span>首页&nbsp;/&nbsp;运行监控&nbsp;/&nbsp;实时状态监控</span>");
 				$('#rightContent').load("monitor/statusmonitor.jsp",null,function(response,status){
 					if (status=="success"){
 			            document.getElementById('rightContent').innerHTML=response;
 			        }
 				});
 			};
-			//运行监控-->异常状态统计
-			var statusstatistics = function() {
+			//运行监控-->异常信息查询
+			var errorinfo = function() {
 				$("#headnavigation").empty();
-				$("#headnavigation").append("<span>首页&nbsp;/&nbsp;异常状态统计</span>");
-				$('#rightContent').load("monitor/statusstatistics.jsp",null,function(response,status){
+				$("#headnavigation").append("<span>首页&nbsp;/&nbsp;运行监控&nbsp;/&nbsp;异常信息查询</span>");
+				$('#rightContent').load("monitor/errorinfo.jsp",null,function(response,status){
 					if (status=="success"){
 			            document.getElementById('rightContent').innerHTML=response;
 			        }
@@ -100,7 +102,7 @@ define(['jquery','Router'],function($,Router){
 			var routes = {
 				'/home': home,
 				'/statusmonitor':statusmonitor,
-				'/statusstatistics':statusstatistics,
+				'/errorinfo':errorinfo,
 				'/timeserverconfig':timeserverconfig,
 				'/clockterminalconfig':clockterminalconfig,
 				'/selectedclockconfig':selectedclockconfig,
@@ -112,7 +114,20 @@ define(['jquery','Router'],function($,Router){
 			var router = Router(routes);
 			// 全局配置设置.
 			router.configure({
-				on: allroutes
+				//on:当路由匹配成功后，需要执行的方法
+				on: allroutes,
+				//before:在触发"on"方法之前执行的方法
+				before:function(){
+					
+				},
+				//after:当离开当前注册路径时，需要执行的方法
+				after:function(){
+					$("#rightContent").children().empty();
+					//清除$(window)绑定的相关事件
+					$(window).unbind();
+					//清空首页定时器，
+					window.clearInterval(DATA.timeId);
+				}
 			});
 			router.init();
 		}

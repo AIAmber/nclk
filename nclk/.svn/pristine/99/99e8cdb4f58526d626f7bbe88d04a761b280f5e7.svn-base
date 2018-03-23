@@ -1,0 +1,47 @@
+package cn.com.sparknet.nclk.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import cn.com.sparknet.nclk.dao.EndPointDao;
+import cn.com.sparknet.nclk.service.EndPointService;
+
+/**
+ * 考点管理
+ * @author wuyl
+ *
+ */
+@Service
+public class EndPointServiceImpl implements EndPointService{
+	
+	@Resource
+	private EndPointDao endPointDao;
+
+	/**
+	 * 根据区域信息查询考点信息
+	 */
+	@Override
+	public String getEndPointByDistrictId(String callBack, String districtId) {
+		List<Map<String, Object>> list = endPointDao.findEndPointByDistrictId(districtId);
+		//拼接json数据
+		StringBuffer sb = new StringBuffer(callBack+"([");
+		for (int i = 0; i < list.size(); i++) {
+			sb.append("{\"ENDPOINT_NAME\":\""+list.get(i).get("ENDPOINT_NAME")+"\",\"ENDPOINT_ID\":\""+list.get(i).get("ENDPOINT_ID")+"\"},");
+		}
+		sb.append("])");
+		return sb.toString();
+	}
+
+	/**
+	 *查询考点列表信息
+	 */
+	@Override
+	public List<Map<String, Object>> findEndPoints() throws Exception {
+		return endPointDao.findEndPoints();
+	}
+
+}

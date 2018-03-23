@@ -1,0 +1,24 @@
+package cn.com.sparknet.nclk.controller;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.com.sparknet.nclk.service.EndPointService;
+
+/**
+ * 考点管理
+ * @author wuyl
+ *
+ */
+@Controller
+@RequestMapping("/EndPointController")
+public class EndPointController {
+	
+	@Resource
+	private EndPointService endPointService;
+	
+	
+
+}

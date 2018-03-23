@@ -1,0 +1,68 @@
+/*列表顶部搜索按钮*/
+.search-btn.clearfix{margin-right: -6px;}
+/*修改授时服务器配置弹出框*/
+.bootstrap-dialog-footer{float: right;}
+.btn-model-diy{width: 60px;} 
+.timeServerConfig-dialog .modal-dialog{width: 480px;height: 400px;}
+.endpointautosearch-dialog .modal-dialog{width: 800px;height: 600px;}
+
+.block-message{display:none;position: fixed;background: white;z-index: 100;}
+.block-content{border: 1px solid #ccc; padding: 10px 15px 15px 15px;-moz-box-shadow: 0px 0px 20px #666;box-shadow: 0px 0px 20px #666;-webkit-box-shadow: 0px 0px 20px #666;}
+.block-content table{margin: 0px}
+.block-content table .detail > td{padding: 0px !important;}
+.block-content table .detail,.detail-content{display: none;}
+.block-content table .detail-content{padding: 5px 8px}
+.block-content .table-nobody td{border: 0px;border-bottom: 0px !important;padding: 4px 4px 0px 0px !important;}
+
+/*考场子钟信息初始化*/
+.endpointimport-dialog .modal-dialog{width: 450px;height: 300px;}
+/*手动添加考场子钟 弹出框*/
+.endpointadd-dialog .modal-dialog{width: 520px;height: 350px;}
+
+/**/
+.error_statusul ul{width:100%;}
+.error_statusul ul li{float:left;width:10%;margin:10px 0px 10px 0px}
+.error_statusul ul li img{width:100%;}
+
+
+
+
+
+
+
+/*运行监控通用样式*/
+ul,li{list-style-type: none;}
+.mr_tp20{margin-top: 20px;}
+.mr_bt20{margin-bottom:20px;}
+.clear_border{border:none;}
+
+/*pannel按钮样式，文字样式*/
+.error_status{background: url("../images/error.png") no-repeat left center;}
+.error_status span{ display: inline-block;margin-left:30px;color:#FF3300;font-weight:600;}
+
+.normal_status{background: url("../images/normal.png") no-repeat left center;}
+.normal_status span{ display: inline-block;margin-left:30px;color:#4CAF50;font-weight:600;}
+
+.disable_status{background: url("../images/disable.png") no-repeat left center;}
+.disable_status span{ display: inline-block;margin-left:30px;color:#FFA012;font-weight:600;}
+
+.error_statusul ul{width:100%;}
+.error_statusul ul li{float:left;width:10%;margin:10px 0px 10px 0px}
+.error_statusul ul li img{width:100%;}
+.error_statusul ul li a{float: right;margin-right: 3px;}
+.error_statusul ul li span{margin-left: 3px;}
+
+/*页面显示数量的样式*/
+.show_tip{height:40px;line-height: 40px;font-size:18px;letter-spacing: 1px;}
+.show_tip span{margin:0 5px;font-weight:600;}
+.totalCount{color:#0099CC}
+.normalCount{color:#009966}
+.errorCount{color:#FF3300}
+.disableCount{color:#FFA012}
+
+
+/*修改异常状态弹出框*/
+.bootstrap-dialog-footer{float: right;}
+.btn-model-diy{width: 60px;} 
+.statusMonitorConfig-dialog .modal-dialog{width: 480px;height: 400px;min-height: 400px}
+

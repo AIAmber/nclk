@@ -1,5 +1,68 @@
 require(['jquery','Util','bootstrap-dialog','bootstrap-grid','table-toolbar'], function($,Util,BootstrapDialog,grid) {	
 	
+	function getPath(){
+		return location.pathname.match(/\/(.+?)(?=\/)/g)[0];
+	}
+	
+	//省市区三级联动
+	$(document).ready(function(){
+		//页面加载完成之后先通过getjson方法获取所有的省份数据
+		//第一个参数为请求的url callBack为固定参数，  第二个参数为回调函数
+		$.getJSON(getPath()+"/AreaController/getProvince?callBack=?",function(res){
+			//通过jquery的each方法遍历res
+			//Option(text, value, defaultSelected, selected)
+			$("#province").append(new Option("请选择省",'',true,true));
+			$.each(res,function(index,item){
+				//查询元素，并且添加option
+				$("#province").append(new Option(item.AREA_NAME,item.AREA_ID,false,false));
+			});
+			//添加完成之后触发选择事件
+			$("#province").change();
+		});
+		
+	});
+	
+	//给省份的选择框添加事件
+	$("#province").change(function(){
+		//获取选择的省份id
+		var parentAreaId = $(this).val();
+		//和请求省份一样，通过getjson请求城市
+		//第一个参数为请求的url callBack为固定参数，第二个参数为需要传递的参数,  第三个参数为回调函数
+		$.getJSON(getPath()+"/AreaController/getCity?callBack=?",{parentAreaId:parentAreaId},function(res){
+			//清空城市选择看
+			$("#city").empty();
+			//通过jquery的each方法遍历res
+			//Option(text, value, defaultSelected, selected)
+			$("#city").append(new Option("请选择市",'',true,true));
+			$.each(res,function(index,item){
+				//查询元素，并且添加option
+				$("#city").append(new Option(item.AREA_NAME,item.AREA_ID,false,false));
+			});
+			//添加完成之后触发选择事件
+			$("#city").change();
+		});
+	});
+	
+	//给地级市的选择框添加事件
+	$("#city").change(function(){
+		//获取选择的省份id
+		var parentAreaId = $(this).val();
+		//和请求省份一样，通过getjson请求城市
+		//第一个参数为请求的url callBack为固定参数，第二个参数为需要传递的参数,  第三个参数为回调函数
+		$.getJSON(getPath()+"/AreaController/getDistrict?callBack=?",{parentAreaId:parentAreaId},function(res){
+			//清空城市选择看
+			$("#district").empty();
+			//通过jquery的each方法遍历res
+			//Option(text, value, defaultSelected, selected)
+			$("#district").append(new Option("请选择区县",'',true,true));
+			$.each(res,function(index,item){
+				//查询元素，并且添加option
+				$("#district").append(new Option(item.AREA_NAME,item.AREA_ID,false,false));
+			});
+		});
+	});
+	
+	
 	$(function(){
 		$(".form-control.pull-left").width("100px");
 	});
@@ -51,7 +114,14 @@ require(['jquery','Util','bootstrap-dialog','bootstrap-grid','table-toolbar'], f
 	        title: '授时ip地址'
 	    }, {
 	        field: 'machineStatus',
-	        title: '设备状态'
+	        title: '设备状态',
+	        formatter:function(value,row,index){
+	        	if(value=="正常"){
+	        		return '正常';
+	        	}else {
+	        		return "<a id='errorinfo'>异常</a>";
+	        	}
+	        }
 	    }, {
 	        field: 'testCenter',
 	        title: '所属考点'
@@ -104,7 +174,6 @@ require(['jquery','Util','bootstrap-dialog','bootstrap-grid','table-toolbar'], f
 	
 	//授时服务器配置 编辑按钮 弹框事件
 	var TimeServerConfigDialog = new BootstrapDialog({
-		title: '修改授时服务器配置',
 		type:'type-default',
         message: $('#editTimeServerConfig').children(),
         closeByBackdrop: false,
@@ -142,6 +211,7 @@ require(['jquery','Util','bootstrap-dialog','bootstrap-grid','table-toolbar'], f
 		//使用ajax 请求去后台查找数据
 		
 		//弹出弹框
+		TimeServerConfigDialog.setTitle("修改授时服务器配置");
 		TimeServerConfigDialog.open();
 	});
 	
@@ -177,6 +247,34 @@ require(['jquery','Util','bootstrap-dialog','bootstrap-grid','table-toolbar'], f
 				dialog.close();
 			});
 		}
+	});
+	
+	//新增授时服务器配置弹出框
+	$("#btn-add").on("click",function(){
+		TimeServerConfigDialog.setTitle("新增授时服务器配置");
+		TimeServerConfigDialog.open();
+	});
+	
+	//鼠标放入设备状态，显示详情框
+	$("#grids-timeserverconfig").on("mouseenter","#errorinfo",function(e){
+		var $blockInfo = $("#machineerrorinfo");
+		$blockInfo.show();
+		var left;
+		var top;
+		if(($blockInfo.width() + e.clientX) > $(window).width()){
+			left = e.clientX - $blockInfo.width();
+		}else{
+			left = e.clientX;
+		}
+		if(($blockInfo.height() + e.clientY) > $(window).height()){
+			top = e.clientY - $blockInfo.height();
+		}else{
+			top = e.clientY;
+		}
+		$blockInfo.css("left",left).css("top",top);
+	}).on("mouseleave","#errorinfo",function(e){
+		$("#machineerrorinfo").hide();
+		$("#machineerrorinfo .detail").hide().find(".detail-content").slideUp();
 	});
 	
 });

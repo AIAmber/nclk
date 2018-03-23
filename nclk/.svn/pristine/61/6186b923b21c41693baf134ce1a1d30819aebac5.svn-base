@@ -1,0 +1,38 @@
+{
+    "total":100,
+    "rows":[{
+            "examNum":"10001",
+            "examName":"金陵中学",
+            "examAddress":"南京市鼓楼区中山北路32号",
+            "examIPAddress":"192.168.1.3",
+            "examPort":"8080",
+            "examPerson":"张文文",
+            "examPhone":"13912356897"
+     },{
+            "examNum":"10002",
+            "examName":"第二十三中学",
+            "examAddress":"南京市鼓楼区新模范马路6号",
+            "examIPAddress":"192.168.1.6",
+            "examPort":"8081",
+            "examPerson":"李乐乐",
+            "examPhone":"15951976654"
+     
+     },{
+            "examNum":"10003",
+            "examName":"百家湖中学",
+            "examAddress":"南京市鼓楼区健康路3号",
+            "examIPAddress":"192.168.1.4",
+            "examPort":"8083",
+            "examPerson":"李思思",
+            "examPhone":"13912356897"
+      },{
+            "examNum":"10004",
+            "examName":"建邺区中学",
+            "examAddress":"南京市建邺区富春江东街79号",
+            "examIPAddress":"192.168.1.5",
+            "examPort":"8084",
+            "examPerson":"张弛",
+            "examPhone":"139123565467"
+     
+     }]
+}

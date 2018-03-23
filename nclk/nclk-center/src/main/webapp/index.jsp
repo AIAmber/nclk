@@ -3,6 +3,10 @@
 <%
 	String path = request.getContextPath();
 	String systemName = Config.getInstance().getProperty("center.system.name");
+	//用户id
+	String userId = (String)request.getSession().getAttribute("USER_ID");
+	//用户姓名
+	String name = (String)request.getSession().getAttribute("NAME");
 %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -80,23 +84,21 @@
 	          <!-- User Account: style can be found in dropdown.less -->
 	          <li class="dropdown user user-menu">
 	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	              <img src="common/img/user2-160x160.jpg" class="user-image" alt="User Image">
-	              <span class="hidden-xs">系统管理员</span>
+	              <img src="<%=path %>/UserController/findUserPhotoById?userId=<%=userId %>" class="user-image" alt="User Image">
+	              <span class="hidden-xs"><%=name %></span>
+	              <input type="hidden" value="<%=userId %>" name="userid">
 	            </a>
 	           	<ul class="dropdown-menu">
 	              <!-- User image -->
 	              <li class="user-header">
-	                <img src="common/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-	                  <p style="color: white;">系统管理员
+	                <img src="<%=path %>/UserController/findUserPhotoById?userId=<%=userId %>" class="img-circle" alt="User Image">
+	                  <p style="color: white;"><%=name %>
 	                  	<small>应用研发部</small>
 	                  </p>
 	              </li>
 	              <!-- Menu Footer-->
 	              <li class="user-footer">
 	              	<div class="btn-group">
-	            		<button type="button" class="btn btn-default btn-user-edit" id="changeinfo">
-			    			<i class="fa fa-user user-foot-button" aria-hidden="true">&nbsp;用户信息</i>
-			   		 	</button>
 			    		<button type="button" class="btn btn-default btn-pass-edit" id="changepassword">
 			    			<i class="fa fa-lock user-foot-button" aria-hidden="true">&nbsp;更改密码</i>
 			   			</button>
@@ -125,28 +127,26 @@
 			}
 			
 			StringBuffer sb = new StringBuffer();
-			
 			for (int i = 0; i <list.size() ; i++) {
 				if(list.get(i).get("PARENT_MODULE_ID") == null){
-				sb.append("<div class='sBox'><div class='subNav sublist-down'>");
-				sb.append("<i class='"+list.get(i).get("MODULE_ICON")+"' aria-hidden='true' ></i>");
-				sb.append("<span class='sublist-title'>"+list.get(i).get("MODULE_NAME")+"</span></div>");
-				sb.append("<ul class='navContent' style='display:block'>");
-				for (int j = 0; j < list.size(); j++) {
-					if(null != list.get(j).get("PARENT_MODULE_ID") && list.get(j).get("PARENT_MODULE_ID").equals(list.get(i).get("MODULE_ID"))){
-						sb.append("<li><div class='showtitle'><img src='common/img/leftimg.png' />"+list.get(j).get("MODULE_NAME"));
-						sb.append("</div><a href='"+list.get(j).get("MODULE_URL")+"'>");
-						sb.append("<span class='"+list.get(j).get("MODULE_ICON")+"'></span>");
-						sb.append("<span class='sub-title'>"+list.get(j).get("MODULE_NAME")+"</span>");					
-						sb.append("</a></li>");
+						sb.append("<div class='sBox'>");
+						sb.append("<div class='subNav sublist-up'>");
+						sb.append("<i class='"+list.get(i).get("MODULE_ICON")+"' aria-hidden='true' ></i>");
+						sb.append("<span class='sublist-title'>"+list.get(i).get("MODULE_NAME")+"</span></div>");
+						sb.append("<ul class='navContent' style='display:none'>");
+						for (int j = 0; j < list.size(); j++) {
+							if(null != list.get(j).get("PARENT_MODULE_ID") && list.get(j).get("PARENT_MODULE_ID").equals(list.get(i).get("MODULE_ID"))){
+								sb.append("<li><div class='showtitle'><img src='common/img/leftimg.png' />"+list.get(j).get("MODULE_NAME"));
+								sb.append("</div><a href='"+list.get(j).get("MODULE_URL")+"'>");
+								sb.append("<span class='"+list.get(j).get("MODULE_ICON")+"'></span>");
+								sb.append("<span class='sub-title'>"+list.get(j).get("MODULE_NAME")+"</span>");					
+								sb.append("</a></li>");
+							}
+						}		
+						sb.append("</ul></div>");			
 					}
-				}		
-				sb.append("</ul></div>");			
-					}
-				} %>
-			
-			<%=sb.toString() %>
-			
+				}%>
+				<%=sb.toString() %>			
 			</div>
 		</div>
 		<div class="right-product my-index right-full">
@@ -171,60 +171,31 @@
 				<div class="info-center" id="rightContent" style="margin:10px 0px 10px 10px;overflow-x:hidden;overflow-y:auto;"></div>
 			</div>
 			<div class="footer">
-				<span class="footer-span">Copyright © 2012-<span id="currentDate"></span><a class="footer-spanstyle" href="http://www.sparksoft.com.cn" target="_blank"><span>江苏星网软件有限公司</span></a>&nbsp;All Rights Reserved.</span>
+				<span class="footer-span">Copyright © 2012-<span id="currentDate"></span>&nbsp;<a class="footer-spanstyle" href="http://www.sparksoft.com.cn" target="_blank"><span>江苏星网软件有限公司</span></a>&nbsp;All Rights Reserved.</span>
 			</div>
 		</div>
 	</div>
 	<!-- 修改个人密码 -->
 	<div style="display: none" id="changepasswordform">
-		<form class="form-horizontal">
+		<form class="form-horizontal" id="changepwd">
 			<div class="form-group">
 			    <label for="pwd" class="col-sm-2 changepassword control-label"><font class="red">*</font>原密码</label>
 			    <div class="col-sm-10">
-			      <input type="password" class="form-control" >
+			      <input type="password" class="form-control" name="password">
 			    </div>
 		    </div>
 		  	<div class="form-group">
 			    <label for="newpassword" class="col-sm-2 changepassword control-label"><font class="red">*</font>新密码</label>
 			    <div class="col-sm-10">
-			      <input type="password" class="form-control" id="newpassword">
+			      <input type="password" class="form-control" name="newpassword" id="newpassword">
 			    </div>
 		    </div>
 		    <div class="form-group">
 			    <label for="confirmpassword" class="col-sm-2 changepassword control-label"><font class="red">*</font>确认密码</label>
 			    <div class="col-sm-10">
-			      <input type="password" class="form-control" id="confirmpassword">
+			      <input type="password" class="form-control" name="confirmpassword">
 			    </div>
 		    </div>
-		</form>
-	</div>
-	<!-- 修改个人信息 -->
-	<div style="display: none" id="changeuserinfo">
-		<form class="form-horizontal">
-          	<div class="form-group">
-               <label for="userName" class="control-label col-sm-2"><font class="red">*</font>用户名</label>
-               <div class="col-sm-10">
-               		<input type="text" class="form-control " id="userName" name="userName">
-               </div>
-             </div>
-             <div class="form-group">
-             	 <label for="perName" class="control-label col-sm-2">姓名</label>
-	             <div class="col-sm-10">
-	               	<input type="text" class="form-control " id="perName" name="perName">
-	             </div>
-             </div>
-             <div class="form-group">
-               	<label for="userPhone" class="control-label col-sm-2">手机</label>
-             	<div class="col-sm-10">
-                	<input type="tel" class="form-control" id="userPhone" name="userPhone">
-             	 </div>
-            </div>
-            <div class="form-group">
-            	<label for="userEmail" class="control-label col-sm-2">邮箱</label>
-               	<div class="col-sm-10">
-                  	<input type="tel" class="form-control" id="" name="">
-               </div>
-            </div>
 		</form>
 	</div>
 	<script type="text/javascript">
