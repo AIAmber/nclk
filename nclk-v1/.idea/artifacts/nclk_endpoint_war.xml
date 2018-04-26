@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="nclk-endpoint:war">
+    <output-path>$PROJECT_DIR$/nclk-endpoint/target</output-path>
+    <root id="archive" name="nclk-endpoint.war">
+      <element id="artifact" artifact-name="nclk-endpoint:war exploded" />
+    </root>
+  </artifact>
+</component>

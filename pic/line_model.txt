@@ -1,0 +1,79 @@
+// // JVM模式， 左进左更新 --------------------------------------------------- start
+                            // lineDataYs.splice(399, 1); // 队列栈模式，先进先出 / 堆模式，后进先出
+                            // lineDataYs.unshift(result["error"]); //挨个取出数值并填入数值数组， error num, Y - unshift：插入头；push：插入尾
+                            // // 调用JSON格式的时间
+                            // // $.getJSON(localPath + "/DashboardController/stringTime", function (data) {
+                            // //     console.log(data["time"]);
+                            // // });
+                            // lineDataXs.splice(399, 1); // 队列栈模式，先进先出 / 堆模式，后进先出
+                            // // 调用Text格式的时间
+                            // $.get(localPath + "/DashboardController/stringTime", function (data) {
+                            //     lineDataXs.unshift(data); //挨个取出类别并填入类别数组, X - unshift：插入头；push：插入尾
+                            // });
+                            // // JVM模式 ---------------------------------------------------------------- end
+
+                            // 心电图模式吗， 左进左固定 ---------------------------------------------- start
+
+                            lineDataYs.splice(i, 1, result["error"]); // 队列栈模式，先进先出 / 堆模式，后进先出
+                            lineDataYSums.splice(i, 1, result["error"] + result["normal"]); // Y轴sum线， 同 <-
+
+                            var lineTimestampValue = ( new Date().getTime() ) + getTimestamp.dashTimeGap;
+                            var lineTimestamp = new Date(lineTimestampValue); // echarts - line 时间戳
+                            dashDatetimeSet(lineTimestamp); // 刷新 dashDateTime、dashTime
+                            console.log("getTimestamp.dashTimeGap: ", getTimestamp.dashTimeGap);
+
+                            lineDataXs.splice(i, 1, (dashDateTime).slice(11, 19)); // 队列栈模式，先进先出 / 堆模式，后进先出
+                            // lineDataXs.unshift(data); //挨个取出类别并填入类别数组, X - unshift：插入头；push：插入尾
+
+                            // fixed button, now datetime 当前时间, button [2]
+                            $("#clockinfo-time-now").html((dashDateTime).slice(0, 17) + "<span style='color: red;'>"
+                                + (dashDateTime).slice(17, 19) + "</span>");
+                            // fixed button, now datetime 当前时间, button [3]
+                            $("#log-time").html((dashDateTime).slice(0, 17) + "<span style='color: red;'>"
+                                + (dashDateTime).slice(17, 19) + "</span>");
+
+                            // title, card - time
+                            $("#dashhead-date-1").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(0, 1) + ".png");
+                            $("#dashhead-date-2").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(1, 2) + ".png");
+                            $("#dashhead-date-3").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(2, 3) + ".png");
+                            $("#dashhead-date-4").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(3, 4) + ".png");
+                            $("#dashhead-date-5").attr("src", localPath + "/dashboard/img/dash-d.png");
+                            $("#dashhead-date-6").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(5, 6) + ".png");
+                            $("#dashhead-date-7").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(6, 7) + ".png");
+                            $("#dashhead-date-8").attr("src", localPath + "/dashboard/img/dash-d.png");
+                            $("#dashhead-date-9").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(8, 9) + ".png");
+                            $("#dashhead-date-10").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(9, 10) + ".png");
+
+                            $("#dashhead-time-1").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(11, 12) + ".png");
+                            $("#dashhead-time-2").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(12, 13) + ".png");
+                            $("#dashhead-time-3").attr("src", localPath + "/dashboard/img/dash-m.png");
+                            $("#dashhead-time-4").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(14, 15) + ".png");
+                            $("#dashhead-time-5").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(15, 16) + ".png");
+
+                            $("#dashhead-sec-1").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(17, 18) + ".png");
+                            $("#dashhead-sec-2").attr("src", localPath + "/dashboard/img/dash-" + (dashDateTime).slice(18, 19) + ".png");
+
+                            i++;
+                            // 心电图模式 ------------------------------------------------------------- end
+
+                            // // CPU模式， 右进右更新---------------------------------------------------- start
+                            // lineDataYs.splice(0, 1); // 队列栈模式，先进先出 / 堆模式，后进先出
+                            // lineDataYs.push(result["error"]); //挨个取出数值并填入数值数组， error num, Y - unshift：插入头；push：插入尾
+                            // // 调用JSON格式的时间
+                            // // $.getJSON(localPath + "/DashboardController/stringTime", function (data) {
+                            // //     console.log(data["time"]);
+                            // // });
+                            // lineDataXs.splice(0, 1); // 队列栈模式，先进先出 / 堆模式，后进先出
+                            // // 调用Text格式的时间
+                            // $.post(localPath + "/DashboardController/stringTime", function (data) {
+                            //     lineDataXs.push(data.time); //挨个取出类别并填入类别数组, X - unshift：插入头；push：插入尾
+                            //
+                            //     // fixed button, now datetime 当前时间, button [2]
+                            //     $("#clockinfo-time-now").html((data.datetime).slice(0, 17) + "<span style='color: red;'>"
+                            //         + (data.datetime).slice(17, 19) + "</span>");
+                            //     // fixed button, now datetime 当前时间, button [3]
+                            //     $("#log-time").html((data.datetime).slice(0, 17) + "<span style='color: red;'>"
+                            //         + (data.datetime).slice(17, 19) + "</span>");
+                            //
+                            // }, 'json');
+                            // // CPU模式  --------------------------------------------------------------- end

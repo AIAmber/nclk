@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ajax echarts test</title>
+
+    <!-- import echarts.js -->
+    <script type="text/javascript" src="js/echarts.mine.js"></script>
+    <!-- import jquery.js -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- ehcarts zone -->
+    <div id="main" style="width: 600px; height: 400px;"></div>
+
+    <!-- echarts js -->
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+
+        myChart.setOption({
+            title: {
+                text: 'example: ajax load json'
+            },
+            tooltip: {},
+//            dataZoom: {
+//                show: true,
+//                realtime: true,
+//                start: 0,
+//                end: 70,
+//                xAxisIndex: 0
+//            },
+            legend: {
+                data: ['num']
+            },
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                xAxisIndex: 0,
+                yAxisIndex: 0,
+                data: [820, 932, 901, 934, 1290, 1330, 1320, 820, 932, 901, 934, 1290, 1330, 1320, 820, 932, 901, 934, 1290, 1330, 1320, 820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line'
+                
+            }]
+        });
+
+//        myChart.showLoading();//
+
+        var names = []; //x
+        var nums = []; //y
+//        myChart.hideLoading();
+
+    </script>
+
+</body>
+
+</html>

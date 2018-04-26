@@ -1,0 +1,289 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul,
+	ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: '微软雅黑', '微软雅黑';
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+}
+
+address, cite, dfn, em, var {
+	font-style: normal;
+}
+
+code, kbd, pre, samp {
+	font-family: couriernew, courier, monospace;
+}
+
+small {
+	font-size: 12px;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+sup {
+	vertical-align: text-top;
+}
+
+sub {
+	vertical-align: text-bottom;
+}
+
+legend {
+	color: #000;
+}
+
+fieldset, img {
+	border: 0;
+}
+
+button, input, select, textarea {
+	font-size: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+input{
+	outline:none;
+}
+.head {
+	width: 1000px;
+	height: 70px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.head-logo {
+	height: 70px;
+	line-height: 70px;
+	position: absolute;
+}
+
+.head-logo p {
+	float: left;
+}
+
+.head-logo img {
+	margin-top: 12px;
+}
+
+.head-logo span {
+	font-family: "微软雅黑";
+	font-size: 24px;
+}
+
+.head-logo span {
+	padding-left: 19px;
+	color: #3b3838;
+}
+
+.box-tip .show-tip img{
+	vertical-align: sub;
+}
+
+.spark-content {
+	width: 100%;
+	background: url(../images/bg.png);
+	height: 514px;
+	background-size: cover;
+	-ms-behavior: url(backgroundsize.min.htc);
+	behavior: url(backgroundsize.min.htc);
+}
+
+.spark-content>div {
+	width: 1000px;
+	margin: 0 auto;
+	height: 514px;
+	position: relative;
+	background: url(../images/background.png);
+}
+
+.login-img {
+	height: 514px;
+	line-height: 514px;
+	float: left;
+}
+
+.login-img img {
+	vertical-align: middle;
+}
+
+.login-box {
+	float: right;
+	right: 0;
+	position: absolute;
+	width: 362px;
+	min-height: 330px;
+	background-color: #fff;
+	margin-top: 60px;
+	border-radius: 5px;
+	behavior: url(PIE.htc);
+	z-index:3;
+	padding-bottom: 30px;
+}
+
+.box-title {
+	background: url(../images/login_title.png) no-repeat;
+	width: 361px;
+	height: 55px;
+	text-align: center;
+	line-height: 55px;
+	color: #61aee3;
+	font-size: 22px;
+	font-family: '微软雅黑 Regular', '微软雅黑';
+}
+
+.box-input {
+	padding-top: 28px;
+	width: 304px;
+	margin: 0 auto;
+}
+
+.box-input input {
+	width: 304px;
+	height: 44px; line-height：1;
+	line-height: 44px\9;
+	background: url(../images/user_input.png) no-repeat;
+	border: 0px;
+	padding-left: 55px;
+	font-size: 14px;
+	margin-bottom: 15px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.box-input .code_input {
+	width: 159px;
+	height: 44px;
+	background: url(../images/code_input.png) no-repeat;
+	border: 0px;
+	padding-left: 55px;
+	font-size: 14px;
+	margin-bottom: 15px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.box-input img {
+	position: absolute;
+	display: inline-block;
+	left: 40px;
+	float: left;
+	margin-top: 7px;
+}
+
+.box-input .code_img {
+	margin-top: 0px;
+	left: 196px;
+	cursor: pointer;
+}
+
+.box-tip {
+	width: 304px;
+	margin: 0 auto;
+}
+
+.box-tip span, input {
+	display: inline-block;
+	float: left;
+}
+
+.box-tip .piaochecked {
+	width: 20px;
+	height: 20px;
+	background: url(../images/checkbox.png) no-repeat;
+	float: left;
+}
+
+.box-tip .on_check {
+	width: 20px;
+	height: 20px;
+	background: url(../images/checked.png) no-repeat;
+}
+
+.box-tip input {
+	visibility: hidden;
+}
+
+.box-tip span {
+	margin-left: 15px;
+	color: #6e6f72;
+	font-size: 14px;
+	font-family: '微软雅黑 Regular', '微软雅黑';
+}
+
+.box-tip .show-tip {
+	color: #fc4343;
+	right: 0px;
+	float: right;
+}
+
+.box-button {
+	width: 304px;
+	margin: 0 auto;
+}
+
+.box-button input {
+	width: 304px;
+	height: 44px;
+	border: 0;
+	margin-top: 27px;
+	background: url(../images/login_button.png) no-repeat;
+	text-align: center;
+	color: #fff;
+	cursor:pointer;
+	font-size: 20px;
+	font-family: '微软雅黑', '微软雅黑';
+}
+
+.box-yun{
+	position: absolute;
+	bottom: -4px;
+	right: 90px;
+	z-index: 1;
+}
+
+.spark-foot {
+	width: 1000px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 10px;
+	clear: both;
+}
+
+.spark-foot p {
+	line-height: 25px;
+	font-size: 14px;
+	color: #5a606e;
+}

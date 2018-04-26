@@ -12,7 +12,7 @@ host = '192.168.1.147'
 port = 3306
 
 dt=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") # timestamp
-tne_id = 220000100633
+tne_id = 220000100101
 tne_ip = '192.168.3.1'
 tne_name = 'NanjingUST, Science 1-1, Room503'
 endpointId = 2200001001
@@ -25,9 +25,9 @@ state = ''
 	
 j = 100
 while j>1:
-	j = j-1 # count
-	i = 892 # examroom_id ++
-	tne_id = 220000100633
+	j = j-1
+	i = 100
+	tne_id = 220000100101
 	# try:
 	# 	conn = MySQLdb.connect(host=host, port=port, user=username, passwd=password, db=databaseName)
 	# 	cur = conn.cursor()
@@ -61,8 +61,6 @@ while j>1:
 		except Exception as e:
 			print("Update the "+ str(i) + " data failed!!!!!!!")
 			# raise e
-
-		# time.sleep(0.2)
 		
 		
 	try:
