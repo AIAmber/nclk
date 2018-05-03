@@ -1,0 +1,23 @@
+# level:ERROR WARN INFO DEBUG
+
+# Set Root Logger
+log4j.rootCategory = DEBUG, stdout, logfile
+
+# Set stdout properties
+log4j.appender.stdout = org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Threshold = ERROR
+log4j.appender.stdout.layout = org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern = <%d{MM-dd HH:mm:ss}>[%-5p][%c][%t][%l]->%m%n
+
+# Set display hibernate parameters,When set log4j.appender.stdout.Threshold=TRACE effective
+log4j.logger.org.hibernate.type.descriptor.sql.BasicBinder = TRACE
+log4j.logger.org.hibernate.type.descriptor.sql.BasicExtractor = TRACE
+
+# Set logfile(daily rolling file) properties
+log4j.appender.logfile = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.logfile.Threshold = ERROR
+log4j.appender.logfile.File = logs/nclk-center.log
+log4j.appender.logfile.Append = true
+log4j.appender.logfile.datePattern = '.'yyyy.MM.dd
+log4j.appender.logfile.layout = org.apache.log4j.PatternLayout
+log4j.appender.logfile.layout.ConversionPattern = <%d{yyyy-MM-dd HH:mm:ss}>[%-5p][%c][%l]->%m%n

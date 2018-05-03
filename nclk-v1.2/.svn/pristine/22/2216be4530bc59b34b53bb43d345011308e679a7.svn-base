@@ -1,0 +1,32 @@
+#Database configuration for MySQL
+center.db.url=jdbc:mysql://192.168.1.147:3306/NCLK?useUnicode=true&characterEncoding=utf-8&useSSL=false
+center.db.username=NCLK
+center.db.password=NCLK
+center.db.password.decrypt=false
+center.db.showSql=true
+center.db.formatSql=false
+
+#NTP\u670D\u52A1\u5668IP\u5730\u5740
+center.ntp.ip=10.66.1.47
+#NTP\u670D\u52A1\u5668\u5B9A\u65F6\u4EFB\u52A1\u6267\u884C\u5468\u671F
+center.ntp.scheduleCycleTime=1000
+
+#System Captcha
+center.system.captcha=true
+#Allow login error count,0 is not limited
+center.login.error.count=3
+#Lock account automatically unlock time.(Units of minutes)
+center.login.error.unlockWaitTime=30
+
+#Monitor refresh time config
+center.intervalTime=3000
+#Dashboard refresh time config
+center.dashboard.dashboardRTime=1000
+#Dashboard refresh timestamp config
+center.dashboard.timestampRTime=10000
+
+#\u5386\u53F2\u65E5\u5FD7\u5B9A\u65F6\u5220\u9664\u5468\u671F\uFF08\u9ED8\u8BA4\u6BCF\u5468\u65E5\u51CC\u6668\u4E00\u70B9\u949F\uFF09
+center.log.deleteLogCron=0 0 1 ? * SUN
+
+#Temporary file directory
+center.file.tempDirectory=temp/

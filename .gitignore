@@ -1,0 +1,6 @@
+/.idea/
+/.svn/
+/svn/
+/target/
+*.iml
+*.class
